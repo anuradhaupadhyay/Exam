@@ -2,7 +2,6 @@ var createTest, limit;
 var questions = [];
 var joinCodeDB;
 var db;
-var bg;
 var joinTest;
 var askCode;
 var problems;
@@ -16,10 +15,6 @@ var answers = [];
 var ind = 1;
 var checkTest;
 var questionForCheck,answerActual;
-
-function preload(){
-  bg = loadImage("bg.jpg")
-}
 
 function setup(){
   createCanvas(displayWidth,displayHeight - 100);
