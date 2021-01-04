@@ -80,13 +80,13 @@ function setup(){
               
               for(var i in questionForCheck){
                 y1+=50;
-                createElement('h3',questionForCheck[i] + ":").position(0,y1);
+                createElement('h3',questionForCheck[i] + ":").position(0,y1).style('font-family',"jokerman");
               }
             })
             
             for(var i in answerActual){
               y2+=50;
-              createElement('h3',answerActual[i]).position(0,y2);
+              createElement('h4',answerActual[i]).position(0,y2);
             }
             
           });
@@ -171,7 +171,7 @@ function draw(){
     ok.hide();
     video = createCapture(VIDEO);
     video.size(200,200);
-    video.position(1000,100);
+    video.position(1000,200);
     poseNet = ml5.poseNet(video, modelReady);
     poseNet.on('pose', gotPoses);
     gameState = "join";
@@ -201,7 +201,7 @@ function draw(){
       if(problems.length >= 1){
         var questionA = createInput();
         questionA.position(0,85);
-        questionA.style('background-color',"#00FFFF");
+        questionA.style('background-color',"#00FF00");
         buttonA = createButton("Submit");
         buttonA.position(200,85);
         buttonA.mousePressed(function (){
@@ -214,7 +214,7 @@ function draw(){
       if(problems.length >= 2){
         var questionB =  createInput();
         questionB.position(0,125);
-        questionB.style('background-color',"#00FFFF");
+        questionB.style('background-color',"#00FF00");
         buttonB = createButton("Submit");
         buttonB.position(200,125);
         buttonB.mousePressed(function (){
@@ -227,7 +227,7 @@ function draw(){
       if(problems.length >= 3){
         var questionC =  createInput();
         questionC.position(0,165);
-        questionC.style('background-color',"#00FFFF");
+        questionC.style('background-color',"#00FF00");
         buttonC = createButton("Submit");
         buttonC.position(200,165);
         buttonC.mousePressed(function (){
@@ -240,7 +240,7 @@ function draw(){
       if(problems.length >= 4){
         var questionD = createInput();
         questionD.position(0,205);
-        questionD.style('background-color',"#00FFFF");
+        questionD.style('background-color',"#00FF00");
         questionD.position(0,205);
         buttonD = createButton("Submit");
         buttonD.position(200,205);
@@ -254,7 +254,7 @@ function draw(){
       if(problems.length === 5){
         var questionE =  createInput();
         questionE.position(0,245);
-        questionE.style('background-color',"#00FFFF");
+        questionE.style('background-color',"#00FF00");
         buttonE = createButton("Submit");
         buttonE.position(200,245);
         buttonE.mousePressed(function (){
@@ -276,14 +276,14 @@ function draw(){
     }
   }
 
-  if(mouseY < 10 || mouseY > displayHeight - 50 || mouseX < 10){
+  if(mouseY < 10 || mouseY > displayHeight - 50 || mouseX < 10 && gameState === "join"){
     swal({
       title:"Please don't hover your cursor outside the Canvas",
       click:false
     });
   }
 
-  if(keyCode === 17 || keyCode === 18){
+  if(keyCode === 17 || keyCode === 18 && gameState === "join"){
         swal({
       title:"Please don't press control or Alt during the test",
       click:false
